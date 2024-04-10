@@ -24,12 +24,13 @@ public class CalendrierAnnuel {
 	}
 	
 	public boolean reserver (int jour, int mois) {
-		try {
-			calendrier[mois-1].reserver(jour);
-		} catch (IllegalStateException e) {
+		boolean estLibre = this.estLibre(jour, mois);
+		if(!estLibre) {
 			return false;
+		} else {
+			calendrier[mois-1].reserver(jour);
+			return true;
 		}
-		return true;
 	}
 	
 	private static class Mois {
