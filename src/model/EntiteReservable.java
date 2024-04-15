@@ -1,24 +1,28 @@
 package model;
 
 public abstract class EntiteReservable<F extends Formulaire> {
-	private CalendrierAnnuel calendrier;
-	private int numId;
+	protected CalendrierAnnuel calendrier;
+	protected int numId;
 	
-	public int getNumId() {
+	protected EntiteReservable() {
+		calendrier = new CalendrierAnnuel();
+	}
+	
+	protected int getNumId() {
 		return numId;
 	}
 	
-	public void setNumId(int numId) {
+	protected void setNumId(int numId) {
 		this.numId = numId;
 	}
 	
-	public boolean estLibre(F formulaire) {
+	protected boolean estLibre(F formulaire) {
 		int jour = formulaire.getJour();
 		int mois = formulaire.getMois();
 		return calendrier.estLibre(jour, mois);
 	}
 	
-	public abstract boolean compatible();
+	protected abstract boolean compatible(F formulaire);
 	
-	public abstract Reservation reserver();
+	protected abstract Reservation reserver(F formulaire);
 }
