@@ -1,6 +1,6 @@
 package model;
 
-public class CentraleReservation <E extends EntiteReservable, F extends Formulaire>{
+public class CentraleReservation <E extends EntiteReservable<F>, F extends Formulaire>{
 	private E[] entitesReservables;
 	private int nbEntite = 0;
 	
